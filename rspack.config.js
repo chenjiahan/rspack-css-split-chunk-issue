@@ -1,25 +1,35 @@
-const env = process.env.NODE_ENV || "development";
-const isDev = env === "development";
 /**
  * @type {import('@rspack/cli').Configuration}
  */
 module.exports = {
-	context: __dirname,
-	entry: {
-		main: "./src/main.jsx"
-	},
-	builtins: {
-		html: [
-			{
-				template: "./index.html"
-			}
-		],
-		define: {
-			"process.env.NODE_ENV": JSON.stringify(env)
-		},
-		react: {
-			development: isDev,
-			refresh: isDev
-		}
-	}
+  context: __dirname,
+  entry: {
+    main: "./src/main.jsx",
+  },
+  module: {
+    rules: [
+      {
+        test: /\.jsx$/,
+        use: [
+          {
+            loader: "babel-loader",
+            options: {
+              plugins: ["@vue/babel-plugin-jsx"],
+            },
+          },
+        ],
+      },
+      {
+        test: /\.svg$/,
+        type: 'asset',
+      },
+    ],
+  },
+  builtins: {
+    html: [
+      {
+        template: "./index.html",
+      },
+    ],
+  },
 };
