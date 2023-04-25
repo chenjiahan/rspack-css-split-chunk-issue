@@ -1,35 +1,28 @@
+// @ts-check
+
 /**
  * @type {import('@rspack/cli').Configuration}
  */
-module.exports = {
+const config = {
   context: __dirname,
   entry: {
-    main: "./src/main.jsx",
-  },
-  module: {
-    rules: [
-      {
-        test: /\.jsx$/,
-        use: [
-          {
-            loader: "babel-loader",
-            options: {
-              plugins: ["@vue/babel-plugin-jsx"],
-            },
-          },
-        ],
-      },
-      {
-        test: /\.svg$/,
-        type: 'asset',
-      },
-    ],
+    main: "./src/main.js",
   },
   builtins: {
-    html: [
-      {
-        template: "./index.html",
+    html: [],
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        styles: {
+          name: "styles",
+          test: /\.css$/,
+          chunks: "all",
+          priority: 99,
+        },
       },
-    ],
+    },
   },
 };
+
+module.exports = config;
