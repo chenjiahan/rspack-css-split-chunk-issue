@@ -8,9 +8,6 @@ const config = {
   entry: {
     main: "./src/main.js",
   },
-  builtins: {
-    html: [],
-  },
   optimization: {
     splitChunks: {
       cacheGroups: {

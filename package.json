@@ -12,6 +12,7 @@
     "vue": "^3.2.47"
   },
   "devDependencies": {
-    "@rspack/cli": "0.1.9"
+    "@rspack/cli": "0.4.2",
+    "@rspack/core": "0.4.2"
   }
 }
